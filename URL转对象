@@ -1,0 +1,12 @@
+Common.prototype.parseUrlQuery = function (url) {
+  var query = {}, i, params, param;
+  if (!url) return query;
+  if (url.indexOf('?') >= 0) url = url.split('?')[1];
+  else return query;
+  params = url.split('&');
+  for (i = 0; i < params.length; i++) {
+    param = params[i].split('=');
+    query[param[0]] = !!param[1] ? decodeURIComponent(param[1]) : undefined;
+  }
+  return query;
+}
